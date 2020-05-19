@@ -1,3 +1,4 @@
+var example = true;
 var moved;
 
 function boardInitialize() {
@@ -56,6 +57,7 @@ function respawn() {
     moved = false;
   }
   setValue(possibleX,possibleY,2);
+  respawnFlash(possibleX,possibleY);
 }
 
 function move(key) {
@@ -193,13 +195,61 @@ function restart() {
   respawn();
 }
 
+function respawnFlash(x,y) {
+  let square = document.getElementById(`${x}-${y}`);
+  let rect = square.getBoundingClientRect();
+  let flash = document.createElement('div');
+  flash.classList.add('flash');
+  flash.style.width = rect.width + 'px';
+  flash.style.height = rect.height + 'px';
+  flash.style.top = rect.top + 'px';
+  flash.style.left = rect.left + 'px';
+  flash.style.opacity = 1;
+  document.querySelector('body').appendChild(flash);
+  fadeFlash();
+}
+
+function fadeFlash() {
+  let flash = document.querySelector('.flash');
+  var fadeEffect = setInterval(function () {
+        if (flash.style.opacity > 0) {
+            flash.style.opacity -= 0.1;
+        } else {
+            clearInterval(fadeEffect);
+            document.querySelector('body').removeChild(flash);
+        }
+    }, 50);
+}
+
 boardInitialize();
 respawn();
+
+if (example) {
+  let x = 0;
+  let y = 0;
+  let num = 2;
+  for (let i = 0; i < 16; i++) {
+    console.log(`${x},${y}`)
+    setValue(x,y,num);
+    num *= 2;
+    if (x > 2) {
+      y++;
+    }
+    if (x < boardArray.length - 1) {
+      x++;
+    } else {x = 0}
+    if (num > 2048) {
+      break;
+    }
+  }
+}
+
 document.addEventListener('keyup', function(event) {
   const key = event.key;
   if (key === 'ArrowUp' || key === 'ArrowDown' || key === 'ArrowLeft' || key === 'ArrowRight') {
+    if (document.querySelector('.flash')) {
+      document.querySelector('body').removeChild(document.querySelector('.flash'));
+    }
     move(key);
   }
 });
-
-console.log(boardArray);

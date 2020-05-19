@@ -51,24 +51,46 @@ table {
   color: white;
 }
 
+.flash {
+  position: absolute;
+  opacity: 1;
+  width: 93.75px;
+  height: 93.75px;
+  background-color: rgba(255,255,255,0.9);
+  z-index: 100;
+  /* transition: opacity 0.5s ease; */
+}
+
 .n2 {
-  background-color: hsl(193, 18%, 76%);
+  background-color: #DEA28D;
 }
 .n4 {
-  background-color: hsl(192, 33%, 78%);
+  background-color: #619980;
 }
 .n8 {
-  background-color: hsl(191, 58%, 78%);
+  background-color: #5E798F;
 }
 .n16 {
-  background-color: #779df1;
+  background-color: #DEBB8D;
 }
 .n32 {
-  background-color: #637cfe;
+  background-color: #C9896F;
 }
 .n64 {
-  background-color: #644bfe;
+  background-color: #4D8B6F;
 }
 .n128 {
-  background-color: #644bfe;
+  background-color: #4B6A81;
+}
+.n256 {
+  background-color: #C9A36F;
+}
+.n512 {
+  background-color: #B67056;
+}
+.n1024 {
+  background-color: #3C7E60;
+}
+.n2048 {
+  background-color: #3B5C75;
 }

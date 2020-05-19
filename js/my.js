@@ -1,5 +1,21 @@
-var example = true;
+var demo = false;
+
 var moved;
+function sound(src) {
+  this.sound = document.createElement("audio");
+  this.sound.src = src;
+  this.sound.setAttribute("controls", "none");
+  this.sound.style.display = "none";
+  document.body.appendChild(this.sound);
+  this.play = function(){
+    this.sound.play();
+  }
+  this.stop = function(){
+    this.sound.pause();
+  }
+}
+var popSound = new sound('./pop.m4a');
+
 
 function boardInitialize() {
   moved = true;
@@ -64,59 +80,40 @@ function move(key) {
 
   function moveAction(x,y,dir) {
     let current = boardArray[x][y];
+    let checkX, checkY;
     if (current == 0) {return;};
     switch(dir) {
       case 'up':
-        if (boardArray[x][y-1] === 0) {
-          moved = true;
-          setValue(x,y-1,current);
-          setValue(x,y,0);
-          moveAction(x,y-1,dir);
-        } else if (boardArray[x][y-1] == boardArray[x][y]) {
-          moved = true;
-          setValue(x,y-1,current*2);
-          setValue(x,y,0);
-        }
+        checkX = x;
+        checkY = y - 1;
         break;
       case 'down':
-        if (boardArray[x][y+1] == '') {
-          moved = true;
-          setValue(x,y+1,current);
-          setValue(x,y,0);
-          moveAction(x,y+1,dir);
-        } else if (boardArray[x][y+1] == boardArray[x][y]) {
-          moved = true;
-          setValue(x,y+1,current*2);
-          setValue(x,y,0);
-        }
+        checkX = x;
+        checkY = y + 1;
         break;
       case 'left':
-        if (x == 0) {break};
-        if (boardArray[x-1][y] == '') {
-          moved = true;
-          setValue(x-1,y,current);
-          setValue(x,y,0);
-          moveAction(x-1,y,dir);
-        } else if (boardArray[x-1][y] == boardArray[x][y]) {
-          moved = true;
-          setValue(x-1,y,current*2);
-          setValue(x,y,0);
-        }
+        if (x == 0) {return};
+        checkX = x - 1;
+        checkY = y;
         break;
       case 'right':
-        if (x == boardArray.length - 1) {break};
-        if (boardArray[x+1][y] == '') {
-          moved = true;
-          setValue(x+1,y,current);
-          setValue(x,y,0);
-          moveAction(x+1,y,dir);
-        } else if (boardArray[x+1][y] == boardArray[x][y]) {
-          moved = true;
-          setValue(x+1,y,current*2);
-          setValue(x,y,0);
-        }
+        if (x == boardArray.length - 1) {return};
+        checkX = x + 1;
+        checkY = y;
         break;
     }
+    if (boardArray[checkX][checkY] == '') {
+      moved = true;
+      setValue(checkX,checkY,current);
+      setValue(x,y,0);
+      moveAction(checkX,checkY,dir);
+    } else if (boardArray[checkX][checkY] == boardArray[x][y]) {
+      moved = true;
+      setValue(checkX,checkY,current*2);
+      setValue(x,y,0);
+      popSound.play();
+    }
+
   }
 
   switch(key) {
@@ -166,6 +163,7 @@ function refreshBoard() {
 
 function gameWin() {
   alert('Congrats, you won!');
+  restart();
 }
 
 function checkGameOver() {
@@ -224,7 +222,7 @@ function fadeFlash() {
 boardInitialize();
 respawn();
 
-if (example) {
+if (demo) {
   let x = 0;
   let y = 0;
   let num = 2;

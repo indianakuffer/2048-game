@@ -1,4 +1,5 @@
 body {
+  font-family: Poppins;
   background-image:
       linear-gradient(45deg, #ccc 25%, transparent 25%),
       linear-gradient(135deg, #ccc 25%, transparent 25%),
@@ -10,10 +11,16 @@ body {
 
 header {
   margin: 20px;
+  font-size: 36px;
 }
 
 header p {
   display: inline-block;
+}
+
+header a {
+  color: inherit;
+  text-decoration: none;
 }
 
 header .nav {
@@ -49,6 +56,7 @@ table {
 .full {
   padding: 5px;
   color: white;
+  font-size: 24px;
 }
 
 .flash {

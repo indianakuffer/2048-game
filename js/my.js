@@ -4,6 +4,7 @@ var moved;
 function sound(src) {
   this.sound = document.createElement("audio");
   this.sound.src = src;
+  this.sound.setAttribute('autoplay')
   this.sound.setAttribute("controls", "none");
   this.sound.style.display = "none";
   document.body.appendChild(this.sound);
@@ -62,7 +63,7 @@ function respawn() {
     // console.log('Respawn attempt: ' + timeOut);
     valueChecked = boardArray[possibleX][possibleY];
     timeOut++;
-    if (timeOut > 100) {
+    if (timeOut > 1000) {
       checkGameOver();
       return;
     }

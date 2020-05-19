@@ -1,3 +1,22 @@
 header {
 
 }
+
+#game {
+  width: 400px;
+  height: 400px;
+  border: 1px solid black;
+}
+
+#game td {
+  border: 1px solid black;
+  width: 25%;
+  height: 25%;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.full {
+  background-color: blue;
+  color: white;
+}

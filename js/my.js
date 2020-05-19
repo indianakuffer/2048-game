@@ -3,8 +3,8 @@ function boardInitialize() {
   for (let i = 0; i < 4; i++) {
     boardArray[i] = [];
   }
-  for (var i = 0; i < boardArray.length; i++) {
-      for (var j = 0; j < 4; j++) {
+  for (let i = 0; i < boardArray.length; i++) {
+      for (let j = 0; j < 4; j++) {
           boardArray[i][j] = 0;
       }
   }
@@ -27,6 +27,26 @@ function setClass(x,y,obj) {
   }
 }
 
+function respawn() {
+  let possibleX;
+  let possibleY;
+  let valueChecked;
+  let timeOut = 1;
+  do {
+    possibleX = Math.round(Math.random()*(boardArray.length - 1));
+    possibleY = Math.round(Math.random()*(boardArray.length - 1));
+    // console.log(possibleX);
+    // console.log(possibleY);
+    console.log('Respawn attempt: ' + timeOut);
+    valueChecked = boardArray[possibleX][possibleY];
+    timeOut++;
+    if (timeOut > 100) {
+      break;
+    }
+  } while (valueChecked > 0);
+  setValue(possibleX,possibleY,2);
+}
+
 boardInitialize();
-setValue(1,0,2);
+respawn();
 console.log(boardArray);

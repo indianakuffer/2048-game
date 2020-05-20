@@ -9,15 +9,18 @@
   </head>
   <body>
     <header>
-      <p>2048</p>
+      <p class='box-shadow'>2048</p>
       <ul class='nav'>
-        <li>About</li>
-        <li onclick='restart();'><a href='#' onclick='return;'>Restart</a></li>
+        <li class='box-shadow'>About</li>
+        <li class='box-shadow' onclick='restart();'><a href='#' onclick='return;'>Restart</a></li>
       </ul>
     </header>
+    <div class="checkerboard-bg">
+
+    </div>
     <main>
       <div class='game-container'>
-        <table id='game'>
+        <table id='game' class='box-shadow'>
           <tr>
             <td id='0-0'></td>
             <td id='1-0'></td>
@@ -43,9 +46,19 @@
             <td id='3-3'></td>
           </tr>
         </table>
+        <table class="button-container">
+          <tr>
+            <td onclick='keyPress("ArrowUp")' style='position: relative; left: 35%' class='box-shadow'>▲</td>
+          </tr>
+          <tr>
+            <td onclick='keyPress("ArrowLeft")' class='box-shadow'>◄</td>
+            <td onclick='keyPress("ArrowDown")' class='box-shadow' style='z-index: 1000;'>▼</td>
+            <td onclick='keyPress("ArrowRight")' class='box-shadow'>►</td>
+          </tr>
+        </table>
       </div>
     </main>
-    <!-- <div class='flash' style='opacity: 1'></div> -->
+    <div id='winbox' style='opacity: 1'></div>
     <script type='text/javascript' src='./js/my.js'></script>
   </body>
 </html>

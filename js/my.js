@@ -160,7 +160,8 @@ function refreshBoard() {
 }
 
 function gameWin() {
-  alert('Congrats, you won!');
+  let winBox = document.querySelector('#win');
+  winBox.style.visible = 'visible';
   restart();
 }
 
@@ -217,6 +218,15 @@ function fadeFlash() {
     }, 50);
 }
 
+function keyPress (key) {
+  if (key === 'ArrowUp' || key === 'ArrowDown' || key === 'ArrowLeft' || key === 'ArrowRight') {
+    if (document.querySelector('.flash')) {
+      document.querySelector('body').removeChild(document.querySelector('.flash'));
+    }
+    move(key);
+  }
+}
+
 boardInitialize();
 respawn();
 
@@ -242,10 +252,5 @@ if (demo) {
 
 document.addEventListener('keyup', function(event) {
   const key = event.key;
-  if (key === 'ArrowUp' || key === 'ArrowDown' || key === 'ArrowLeft' || key === 'ArrowRight') {
-    if (document.querySelector('.flash')) {
-      document.querySelector('body').removeChild(document.querySelector('.flash'));
-    }
-    move(key);
-  }
+  keyPress(key);
 });

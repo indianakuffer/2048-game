@@ -1,10 +1,10 @@
 var demo = false;
 
 var moved;
+
 function sound(src) {
   this.sound = document.createElement("audio");
   this.sound.src = src;
-  this.sound.setAttribute('autoplay')
   this.sound.setAttribute("controls", "none");
   this.sound.style.display = "none";
   document.body.appendChild(this.sound);
@@ -58,9 +58,6 @@ function respawn() {
   do {
     possibleX = Math.round(Math.random()*(boardArray.length - 1));
     possibleY = Math.round(Math.random()*(boardArray.length - 1));
-    // console.log(possibleX);
-    // console.log(possibleY);
-    // console.log('Respawn attempt: ' + timeOut);
     valueChecked = boardArray[possibleX][possibleY];
     timeOut++;
     if (timeOut > 1000) {

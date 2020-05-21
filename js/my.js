@@ -12,7 +12,7 @@ document.addEventListener('keyup', function(event) {
 });
 
 // Demo mode spawns all blocks
-var demo = true;
+var demo = false;
 if (demo) {
   let x = 0;
   let y = 0;

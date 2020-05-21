@@ -1,4 +1,4 @@
-var demo = false;
+var demo = true;
 
 var moved;
 
@@ -195,11 +195,12 @@ function restart() {
 function respawnFlash(x,y) {
   let square = document.getElementById(`${x}-${y}`);
   let rect = square.getBoundingClientRect();
+  console.log(rect);
   let flash = document.createElement('div');
   flash.classList.add('flash');
   flash.style.width = rect.width + 'px';
   flash.style.height = rect.height + 'px';
-  flash.style.top = rect.top + 'px';
+  flash.style.top = rect.top + window.pageYOffset + 'px';
   flash.style.left = rect.left + 'px';
   flash.style.opacity = 1;
   document.querySelector('body').appendChild(flash);

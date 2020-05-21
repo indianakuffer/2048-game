@@ -6,14 +6,17 @@ html {
 
 body {
   font-family: Poppins;
-  height: 600px;
+  min-height: 100vh;
+  background: url('../images/pattern.png');
+  /*
   background-image:
       linear-gradient(45deg, #f7f7f7 25%, transparent 25%),
       linear-gradient(135deg, #f7f7f7 25%, transparent 25%),
       linear-gradient(45deg, transparent 75%, #f7f7f7 75%),
       linear-gradient(135deg, transparent 75%, #f7f7f7 75%);
-    background-size:100px 100px; /* Must be a square */
-    background-position:0 0, 50px 0, 50px 50px, 0px 50px; /* Must be half of one side of the square */
+    background-size:100px 100px;
+    background-position:0 0, 50px 0, 50px 50px, 0px 50px; /* Must be half of one side of the square */ */
+
 }
 
 @keyframes color-change {
@@ -38,10 +41,10 @@ body {
 }
 
 header {
-  margin: 20px;
-  font-size: 36px;
+  margin: 0px 40px 80px 40px;
+  font-size: 48px;
   position: relative;
-  top: 10px;
+  top: 20px;
 }
 
 header p {
@@ -56,11 +59,11 @@ header a {
   text-decoration: none;
 }
 
-header .nav {
+.nav {
   float: right;
 }
 
-header .nav li {
+.nav li {
   display: inline-block;
   margin: 0px 20px;
   background-color: white;
@@ -96,14 +99,14 @@ table {
 .full {
   padding: 5px;
   color: white;
-  font-size: 24px;
+  font-size: 36px;
 }
 
 .flash {
   position: absolute;
   opacity: 1;
-  width: 93.75px;
-  height: 93.75px;
+  /* width: 93.75px;
+  height: 93.75px; */
   background-color: rgba(255,255,255,0.9);
   z-index: 100;
   /* transition: opacity 0.5s ease; */
@@ -144,16 +147,16 @@ table {
 }
 
 .button-container {
-  font-size: 24px;
-  width: 170px;
+  font-size: 30px;
+  width: 18vw;
   text-align: center;
-  margin: 0 auto;
+  margin: 40px auto;
 }
 
 .button-container td {
   background-color: white;
   border-radius: 8px;
-  height: 50px;
+  height: 5.5vw;
   vertical-align: middle;
 }
 
@@ -162,4 +165,43 @@ table {
   left: 2px;
   top: 2px;
   box-shadow: none;
+}
+
+@media only screen and (max-device-width: 600px) {
+  header {
+    padding-top: 40px;
+    margin-bottom: 10vh;
+    font-size: 70px;
+    overflow-y: visible;
+  }
+
+  header p {
+    font-size: 140px;
+    padding: 20px;
+  }
+
+  .nav li {
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  #game {
+    width: 80vw;
+    height: 80vw;
+  }
+
+  .full {
+    font-size: 80px;
+  }
+  .button-container {
+    position: absolute;
+    font-size: 64px;
+    width: 50vw;
+    left: 25vw;
+  }
+
+  .button-container td {
+    border-radius: 8px;
+    height: 18vw;
+  }
 }

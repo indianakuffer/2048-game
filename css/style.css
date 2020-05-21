@@ -167,6 +167,28 @@ table {
   box-shadow: none;
 }
 
+#popup {
+  background-color: rgba(255,255,255,0.8);
+  position: absolute;
+  text-align: center;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 200;
+}
+
+#popup p {
+  font-size: 48px;
+  background-color: white;
+  width: 250px;
+  margin: 0 auto;
+  padding: 10px;
+  border-radius: 10px;
+  position: relative;
+  top: 40%;
+}
+
 @media only screen and (max-device-width: 600px) {
   header {
     padding-top: 40px;
@@ -203,5 +225,11 @@ table {
   .button-container td {
     border-radius: 8px;
     height: 18vw;
+  }
+
+  #popup p {
+    font-size: 100px;
+    padding: 20px;
+    width: 70vw;
   }
 }

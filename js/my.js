@@ -122,8 +122,12 @@ function move(key) {
       setValue(x,y,0);
       moveAction(checkX,checkY,dir);
     } else if (boardArray[checkX][checkY] == boardArray[x][y]) {
+      let checkedSquare = document.getElementById(`${checkX}-${checkY}`);
+      // Prevents squares that were previously merged from merging again
+      if (checkedSquare.classList.contains('already-merged')) {return;}
       moved = true;
       setValue(checkX,checkY,current*2);
+      checkedSquare.classList.add('already-merged');
       setValue(x,y,0);
       popSound.play();
     }
